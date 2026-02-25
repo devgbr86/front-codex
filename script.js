@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   script.js — DEV//KNOWLEDGE Landing Page
+   script.js — FrontBooks Landing Page
    Comportamentos: AOS init, smooth scroll, hover effects
 ════════════════════════════════════════════════════════ */
 
@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ── 1. INICIALIZA AOS ── */
   AOS.init({
-    once: true,        // anima só na primeira vez que entra na viewport
-    offset: 80,        // distância (px) do fundo da viewport para disparar
+    once: true,
+    offset: 80,
     easing: 'ease-out',
     duration: 700
   });
@@ -34,14 +34,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
       e.preventDefault();
 
-      const navH   = navbar ? navbar.offsetHeight : 64;
-      const top    = target.getBoundingClientRect().top + window.scrollY - navH;
+      const navH = navbar ? navbar.offsetHeight : 64;
+      const top  = target.getBoundingClientRect().top + window.scrollY - navH;
 
       window.scrollTo({ top: top, behavior: 'smooth' });
     });
   });
 
-  /* ── 4. EFEITO GLOW nos botões de compra ao hover ── */
+  /* ── 4. EFEITO GLOW nos botões ao hover ── */
   document.querySelectorAll('.btn-primary').forEach(function (btn) {
     btn.addEventListener('mouseenter', function () {
       this.style.textShadow = '0 0 8px rgba(255, 102, 0, 0.8)';
@@ -51,14 +51,15 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  /* ── 5. CURSOR HIGHLIGHT nos tópicos dos cards ── */
-  document.querySelectorAll('.card-topics li').forEach(function (li) {
-    li.addEventListener('mouseenter', function () {
-      this.style.paddingLeft = '6px';
-      this.style.transition  = 'padding-left 0.15s ease, color 0.2s';
+  /* ── 5. HOVER nos capítulos do sumário ── */
+  document.querySelectorAll('.summary-chapter').forEach(function (ch) {
+    ch.addEventListener('mouseenter', function () {
+      const num = this.querySelector('.chapter-num');
+      if (num) num.style.opacity = '1';
     });
-    li.addEventListener('mouseleave', function () {
-      this.style.paddingLeft = '';
+    ch.addEventListener('mouseleave', function () {
+      const num = this.querySelector('.chapter-num');
+      if (num) num.style.opacity = '';
     });
   });
 
