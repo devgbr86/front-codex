@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://devgbr86.github.io/front-codex/sitemap.xml
